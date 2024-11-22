@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Budi's Store</title>
+    <script src="script.js"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body onload="loadArticles()">
+    <div class="grid-container">
+        <div class="gridItem">
+            <img src="tes.jpg" width="300" height="200">
+            <p>Product 1 Description</p>
+            <button class="buttonStyle" onclick="addToCart('Product 1', 'Product 1 Description')">Add to Cart</button>
+        </div>
+        <div class="gridItem">
+            <img src="tes.jpg" width="300" height="200">
+            <p>Product 2 Description</p>
+            <button class="buttonStyle" onclick="addToCart('Product 2', 'Product 2 Description')">Add to Cart</button>
+        </div>
+        <div class="gridItem">
+            <img src="tes.jpg" width="300" height="200">
+            <p>Product 3 Description</p>
+            <button class="buttonStyle" onclick="addToCart('Product 3', 'Product 3 Description')">Add to Cart</button>
+        </div>
+        <div class="gridItem">
+            <img src="tes.jpg" width="300" height="200">
+            <p>Product 4 Description</p>
+            <button class="buttonStyle" onclick="addToCart('Product 4', 'Product 4 Description')">Add to Cart</button>
+        </div>
+        <button class="buttonStyle" onclick="cart()">Cart</button>
+    </div>
+    <script>
+        function cart() {
+  window.location.href = "cart.html";
+}
+    </script>
+    
+</body>
+
+</html>
