@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add to Cart</title>
+    <script src="script.js"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body onload="displayCartItems()">
+    <h1>Cart</h1>
+    <div id="likedArticlesContainer" class="articleContainer">
+        <img src=".jpg" width="300" height="200" alt="Product 1">
+
+    </div>
+    <button onclick="window.location.href='index.html'">Back to Menu</button>
+
+    <script>
+            function clearCart() {
+        localStorage.removeItem("cartItems");
+        displayCartItems();
+        alert("Cart cleared!");
+    }
+    function displayCartItems() {
+        let cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
+        let likedArticlesContainer = document.getElementById("likedArticlesContainer");
+
+        likedArticlesContainer.innerHTML = ""; // Clear previous content
+
+        cartItems.forEach((item) => {
+            let itemElement = document.createElement("div");
+            itemElement.classList.add("singleArticleContainer");
+            itemElement.innerHTML = `
+                <h1 class="title">${item.name}</h1>
+                <img src="${item.image}" alt="${item.name}" width="300" height="200">
+                <p class="paragrafStyle">${item.description}</p>
+            `;
+            likedArticlesContainer.appendChild(itemElement);
+        });
+    }
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Budi's Store</title>
+    <script src="script.js"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body onload="loadArticles()">
+    <h1>Here is Our Product</h1>
+    <h1></h1>
+    <h1></h1>
+    <div class="container">
+        <div class="grid-container">
+            <div class="gridItem">
+                <img src="tes.jpg" width="300" height="200">
+                <p>Product 1 Description</p>
+                <button class="buttonStyle" onclick="addToCart('Product 1', 'Product 1 Description', 'path/to/product1.jpg')">Add to Cart</button>
+            </div>
+            <div class="gridItem">
+                <img src="tes.jpg" width="300" height="200">
+                <p>Product 2 Description</p>
+                <button class="buttonStyle" onclick="addToCart('Product 2', 'Product 2 Description', 'path/to/product1.jpg')">Add to Cart</button>
+            </div>
+            <div class="gridItem">
+                <img src="tes.jpg" width="300" height="200">
+                <p>Product 3 Description</p>
+                <button class="buttonStyle" onclick="addToCart('Product 3', 'Product 3 Description', 'path/to/product1.jpg')">Add to Cart</button>
+            </div>
+            <div class="gridItem">
+                <img src="tes.jpg" width="300" height="200">
+                <p>Product 4 Description</p>
+                <button class="buttonStyle" onclick="addToCart('Product 4', 'Product 4 Description', 'path/to/product1.jpg')">Add to Cart</button>
+            </div>
+            <button class="buttonStyle" onclick="cart()">Cart</button>
+        </div>
+    <script>
+        function cart() {
+  window.location.href = "cart.html";
+}
+function updateCartCount() {
+    let cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
+    let cartButton = document.querySelector(".buttonStyle[onclick='cart()']");
+    cartButton.textContent = `Cart (${cartItems.length})`;
+}
+
+window.onload = function () {
+    loadArticles();
+    updateCartCount();
+};
+
+function addToCart(productName, productDescription, productImage) {
+    let cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
+    const product = {
+        name: productName,
+        description: productDescription,
+        image: productImage,
+    };
+
+    if (!cartItems.some((item) => item.name === productName)) {
+        cartItems.push(product);
+        localStorage.setItem("cartItems", JSON.stringify(cartItems));
+        alert(`${productName} added to cart!`);
+        updateCartCount(); // Ensure this is defined to update the cart count display
+    } else {
+        alert(`${productName} is already in the cart.`);
+    }
+}
+
+
+
+    </script>
+    
+</body>
+
+</html>
